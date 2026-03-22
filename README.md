@@ -1,4 +1,1 @@
-# kite-lang
-Lite programming lengusge
-this is creating ai claude 
-and this not complete
+KITE is a minimalist interpreted dynamic programming language created with Claude AI. This is still a rough version and will be further developed.
