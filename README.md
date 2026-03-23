@@ -1,4 +1,6 @@
-# 🪁 KITE
+<p align="center">
+  <img src="kite-logo.svg" width="200"/>
+</p>
 
 > Минимальный язык программирования, написанный на C
 
