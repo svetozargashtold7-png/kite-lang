@@ -1,0 +1,400 @@
+# ═══════════════════════════════════════════
+#  KITE language — full test suite
+# ═══════════════════════════════════════════
+
+say("=== 1. BASICS ===")
+
+set x = 100
+set y = 3.14
+set name = "KITE"
+set flag = true
+set nothing = nil
+
+say(x, y, name, flag, nothing)
+say("types:", type(x), type(y), type(name), type(flag), type(nothing))
+
+# ─── arithmetic ───
+say("=== 2. ARITHMETIC ===")
+say(10 + 3)
+say(10 - 3)
+say(10 * 3)
+say(10 / 4)
+say(10 % 3)
+say(2 ^ 10)
+say(sqrt(144))
+say(abs(-42))
+say(floor(3.9))
+say(ceil(3.1))
+say(round(3.5))
+
+# ─── strings ───
+say("=== 3. STRINGS ===")
+set a = "Hello"
+set b = "World"
+say(a .. ", " .. b .. "!")
+say(a + " " + b)
+say("ha" * 3)
+say(len("kite"))
+say(upcase("hello"))
+say(downcase("KITE"))
+say(trim("  spaces  "))
+say(replace("banana", "a", "o"))
+say(index_of("hello world", "world"))
+set parts = split("one,two,three", ",")
+say(parts)
+say(join(parts, " | "))
+
+# ─── comparisons & logic ───
+say("=== 4. LOGIC ===")
+say(1 == 1)
+say(1 != 2)
+say(3 > 2)
+say(2 >= 2)
+say(not true)
+say(true and false)
+say(true or false)
+
+# ─── when / orwhen / else ───
+say("=== 5. WHEN ===")
+set n = 42
+when n > 0:
+  say("positive")
+orwhen n == 0:
+  say("zero")
+else:
+  say("negative")
+end
+
+when n == 42:
+  say("the answer!")
+end
+
+# ─── loops ───
+say("=== 6. LOOPS ===")
+set i = 0
+set total = 0
+loop while i < 5:
+  total += i
+  i += 1
+end
+say("sum 0..4 =", total)
+
+loop for item in ["apple", "banana", "cherry"]:
+  say("fruit:", item)
+end
+
+loop for k in range(1, 6):
+  say(k, "^2 =", k ^ 2)
+end
+
+# break and next
+set cnt = 0
+loop for j in range(20):
+  when j % 2 == 0:
+    next
+  end
+  cnt += 1
+  when cnt >= 3:
+    break
+  end
+end
+say("collected odd items:", cnt)
+
+# ─── lists ───
+say("=== 7. LISTS ===")
+set nums = [10, 20, 30, 40, 50]
+say(nums)
+say("len:", len(nums))
+say("first:", nums[0])
+say("last:", nums[-1])
+push(nums, 60)
+say("after push:", nums)
+set removed = pop(nums)
+say("popped:", removed, "list:", nums)
+say("slice [1:3]:", slice(nums, 1, 3))
+say("has 30?", has(nums, 30))
+say("has 99?", has(nums, 99))
+say("reversed:", reverse(nums))
+say("sorted:", sort(nums))
+set merged = concat([1,2,3], [4,5,6])
+say("concat:", merged)
+
+# ─── maps ───
+say("=== 8. MAPS ===")
+set person = {name: "Alice", age: 30, city: "Moscow"}
+say(person)
+say("name:", person["name"])
+say("age:", person.age)
+person["job"] = "Engineer"
+say("keys:", keys(person))
+say("vals:", vals(person))
+say("has name?", has(person, "name"))
+say("has salary?", has(person, "salary"))
+
+# ─── functions ───
+say("=== 9. FUNCTIONS ===")
+def greet(who):
+  give "Hello, " .. who .. "!"
+end
+
+say(greet("World"))
+
+def factorial(n):
+  when n <= 1:
+    give 1
+  end
+  give n * factorial(n - 1)
+end
+
+loop for k in range(1, 9):
+  say(k .. "! = " .. factorial(k))
+end
+
+def power(base, exp):
+  set result = 1
+  set i = 0
+  loop while i < exp:
+    result *= base
+    i += 1
+  end
+  give result
+end
+
+say("2^10 =", power(2, 10))
+say("3^5  =", power(3, 5))
+
+# ─── lambdas ───
+say("=== 10. LAMBDAS ===")
+set square = x -> x * x
+set cube   = x -> x * x * x
+say("square(7) =", square(7))
+say("cube(4)   =", cube(4))
+
+set add = (a, b) -> a + b
+say("add(3,4)  =", add(3, 4))
+
+set adder = n -> (x -> x + n)
+set add10 = adder(10)
+set add5  = adder(5)
+say("add10(3) =", add10(3))
+say("add5(7)  =", add5(7))
+
+# ─── closures ───
+say("=== 11. CLOSURES ===")
+def make_counter(start):
+  set count = start
+  def inc():
+    count += 1
+    give count
+  end
+  give inc
+end
+
+set counter = make_counter(0)
+say(counter())
+say(counter())
+say(counter())
+
+def make_acc():
+  set total = 0
+  def acc(n):
+    total += n
+    give total
+  end
+  give acc
+end
+
+set acc = make_acc()
+say(acc(5))
+say(acc(3))
+say(acc(10))
+
+# ─── higher-order functions ───
+say("=== 12. HIGHER-ORDER ===")
+set data = range(1, 11)
+say("data:", data)
+
+set squares = map(data, x -> x * x)
+say("squares:", squares)
+
+set evens = filter(data, x -> x % 2 == 0)
+say("evens:", evens)
+
+set sum = reduce(data, (a, b) -> a + b, 0)
+say("sum:", sum)
+
+set product = reduce(range(1, 6), (a, b) -> a * b, 1)
+say("5! via reduce:", product)
+
+# pipeline
+set result = reduce(
+  filter(
+    map(range(1, 11), x -> x * x),
+    x -> x > 25
+  ),
+  (a, b) -> a + b,
+  0
+)
+say("sum of squares > 25:", result)
+
+# ─── sort with comparator ───
+say("=== 13. SORT ===")
+set words = ["banana", "apple", "cherry", "date", "elderberry"]
+set sorted_words = sort(words, (a, b) ->:
+  when a < b: give -1 end
+  when a > b: give  1 end
+  give 0
+end)
+say("alpha sort:", sorted_words)
+
+set by_length = sort(words, (a, b) -> len(a) - len(b))
+say("by length:", by_length)
+
+# ─── recursion: fibonacci ───
+say("=== 14. FIBONACCI ===")
+def fib(n):
+  when n <= 1: give n end
+  give fib(n-1) + fib(n-2)
+end
+
+loop for k in range(0, 11):
+  say("fib(" .. k .. ") = " .. fib(k))
+end
+
+# fast iterative
+def fib_fast(n):
+  when n <= 1: give n end
+  set a = 0
+  set b = 1
+  set i = 2
+  loop while i <= n:
+    set tmp = a + b
+    a = b
+    b = tmp
+    i += 1
+  end
+  give b
+end
+say("fib(30) =", fib_fast(30))
+say("fib(50) =", fib_fast(50))
+
+# ─── objects as maps ───
+say("=== 15. OBJECTS ===")
+def make_point(x, y):
+  give {x: x, y: y}
+end
+
+def point_dist(p, q):
+  set dx = q["x"] - p["x"]
+  set dy = q["y"] - p["y"]
+  give sqrt(dx*dx + dy*dy)
+end
+
+def point_str(p):
+  give "(" .. p["x"] .. ", " .. p["y"] .. ")"
+end
+
+set p1 = make_point(0, 0)
+set p2 = make_point(3, 4)
+say("p1 =", point_str(p1))
+say("p2 =", point_str(p2))
+say("dist =", point_dist(p1, p2))
+
+# stack object
+def make_stack():
+  give {items: [], size: 0}
+end
+def stack_push(s, v):
+  push(s["items"], v)
+  s["size"] += 1
+end
+def stack_pop(s):
+  s["size"] -= 1
+  give pop(s["items"])
+end
+def stack_peek(s):
+  give s["items"][s["size"] - 1]
+end
+
+set st = make_stack()
+stack_push(st, 10)
+stack_push(st, 20)
+stack_push(st, 30)
+say("top:", stack_peek(st))
+say("pop:", stack_pop(st))
+say("pop:", stack_pop(st))
+say("size:", st["size"])
+
+# ─── algorithms ───
+say("=== 16. ALGORITHMS ===")
+
+# bubble sort
+def bubble_sort(arr):
+  set n = len(arr)
+  set i = 0
+  loop while i < n:
+    set j = 0
+    loop while j < n - i - 1:
+      when arr[j] > arr[j+1]:
+        set tmp = arr[j]
+        arr[j]   = arr[j+1]
+        arr[j+1] = tmp
+      end
+      j += 1
+    end
+    i += 1
+  end
+  give arr
+end
+
+set unsorted = [64, 34, 25, 12, 22, 11, 90]
+say("original:", unsorted)
+say("bubble:  ", bubble_sort(unsorted))
+
+# binary search
+def bin_search(arr, target, lo, hi):
+  when lo > hi: give -1 end
+  set mid = floor((lo + hi) / 2)
+  when arr[mid] == target: give mid end
+  when arr[mid] < target:  give bin_search(arr, target, mid+1, hi) end
+  give bin_search(arr, target, lo, mid-1)
+end
+
+set sorted_arr = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+say("find 23 at index:", bin_search(sorted_arr, 23, 0, len(sorted_arr)-1))
+say("find 99 at index:", bin_search(sorted_arr, 99, 0, len(sorted_arr)-1))
+
+# ─── FizzBuzz ───
+say("=== 17. FIZZBUZZ ===")
+loop for m in range(1, 21):
+  when m % 15 == 0:
+    say("FizzBuzz")
+  orwhen m % 3 == 0:
+    say("Fizz")
+  orwhen m % 5 == 0:
+    say("Buzz")
+  else:
+    say(m)
+  end
+end
+
+# ─── string iteration ───
+say("=== 18. STRING ITER ===")
+set vowels = 0
+loop for ch in "Hello World":
+  when ch == "a" or ch == "e" or ch == "i" or ch == "o" or ch == "u":
+    vowels += 1
+  end
+end
+say("vowels in 'Hello World':", vowels)
+
+# ─── math ───
+say("=== 19. MATH ===")
+say("PI =", PI)
+say("sin(PI/2) =", sin(PI / 2))
+say("cos(0)    =", cos(0))
+say("log(1)    =", log(1))
+say("min list  =", min([5, 2, 8, 1, 9, 3]))
+say("max list  =", max([5, 2, 8, 1, 9, 3]))
+
+say("=== ALL TESTS PASSED ===")
