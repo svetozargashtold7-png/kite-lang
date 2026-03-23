@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 500" width="420" height="500">
+  <defs>
+    <style>
+      /* Светлая тема — коричневый */
+      .adapt-dark  { fill: #4a2510; }
+      .adapt-text  { fill: #4a2510; }
+      .adapt-line  { stroke: #6b3a1f; }
+      .adapt-dot   { fill: #e07820; }
+      .adapt-branch{ stroke: #5a3010; }
+
+      /* Тёмная тема — светло-бежевый */
+      @media (prefers-color-scheme: dark) {
+        .adapt-dark  { fill: #e8c99a; }
+        .adapt-text  { fill: #e8c99a; }
+        .adapt-line  { stroke: #c8a070; }
+        .adapt-dot   { fill: #f0a030; }
+        .adapt-branch{ stroke: #c8903a; }
+      }
+    </style>
+  </defs>
+
+  <!-- no background — transparent -->
+
+  <!-- ════════════════════════════════════
+       КОРШУН СИДИТ — вид сбоку, вправо
+       Крылья сложены, хвост раздвоен
+  ════════════════════════════════════ -->
+
+  <!-- ── ВЕТКА ── -->
+  <path class="adapt-branch" d="M 60,330 C 90,326 130,324 180,325 C 230,326 280,328 360,322"
+    fill="none" stroke-width="10" stroke-linecap="round"/>
+  <!-- Кора на ветке -->
+  <path d="M 80,326 C 100,322 120,327 140,324"
+    fill="none" stroke="#7a4820" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 200,326 C 220,322 240,327 260,325"
+    fill="none" stroke="#7a4820" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- ── ЛАПЫ ── -->
+  <!-- Лапа дальняя -->
+  <path d="M 195,318 C 192,323 190,328 190,330"
+    fill="none" stroke="#d07020" stroke-width="4" stroke-linecap="round"/>
+  <!-- Пальцы дальней лапы -->
+  <path d="M 190,330 C 183,332 178,331 176,329" fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 190,330 C 188,336 187,339 189,337"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 190,330 C 195,333 198,333 196,330"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 190,330 C 194,337 196,340 193,337"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Лапа ближняя -->
+  <path d="M 210,318 C 212,323 214,328 215,330"
+    fill="none" stroke="#e07820" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Пальцы ближней лапы -->
+  <path d="M 215,330 C 208,333 203,332 201,329" fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 215,330 C 213,337 213,340 215,338"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 215,330 C 220,333 223,332 221,329"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 215,330 C 220,337 222,340 219,337"  fill="none" stroke="#c05e10" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- ── ХВОСТ РАЗДВОЕННЫЙ ── -->
+  <!-- Правое перо хвоста -->
+  <path d="M 218,302 C 228,310 238,318 242,330 C 245,338 243,345 238,346
+    C 234,338 230,328 224,318 C 218,310 214,306 214,300 Z"
+    fill="#7d4422"/>
+  <!-- Левое перо хвоста -->
+  <path d="M 182,302 C 172,310 162,318 158,330 C 155,338 157,345 162,346
+    C 166,338 170,328 176,318 C 182,310 186,306 186,300 Z"
+    fill="#6b3a1f"/>
+  <!-- Перья хвоста — штриховка -->
+  <path d="M 238,330 C 241,340 240,346 238,346" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 162,330 C 159,340 159,346 162,346" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 228,316 C 232,326 232,334 230,338" fill="none" stroke="#4a2510" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 172,316 C 168,326 168,334 170,338" fill="none" stroke="#4a2510" stroke-width="0.8" stroke-linecap="round"/>
+
+  <!-- ── ТЕЛО — округлое, сидящая птица ── -->
+  <!-- Спина/крылья сложены поверх -->
+  <path d="M 178,180 C 175,200 172,240 175,275 C 178,295 190,308 200,310
+    C 210,308 222,295 225,275 C 228,240 225,200 222,180
+    C 218,165 205,158 200,158 C 195,158 182,165 178,180 Z"
+    fill="#7d4422"/>
+
+  <!-- Крылья сложены — виден контур -->
+  <path d="M 178,185 C 165,195 158,220 160,258 C 162,278 170,295 180,302
+    C 185,290 182,265 184,240 C 186,215 188,195 190,182 Z"
+    fill="#6b3a1f"/>
+  <path d="M 222,185 C 235,195 242,220 240,258 C 238,278 230,295 220,302
+    C 215,290 218,265 216,240 C 214,215 212,195 210,182 Z"
+    fill="#8b5a2b"/>
+
+  <!-- Перья крыльев — горизонтальные линии -->
+  <path d="M 165,215 C 172,213 188,212 190,214" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 163,228 C 170,226 187,225 190,227" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 162,241 C 169,239 186,238 190,240" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 162,254 C 169,252 185,251 189,253" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 163,267 C 170,265 184,264 188,266" fill="none" stroke="#4a2510" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 235,215 C 228,213 212,212 210,214" fill="none" stroke="#5a3010" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 237,228 C 230,226 213,225 210,227" fill="none" stroke="#5a3010" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 238,241 C 231,239 214,238 210,240" fill="none" stroke="#5a3010" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 238,254 C 231,252 215,251 211,253" fill="none" stroke="#5a3010" stroke-width="1" stroke-linecap="round"/>
+  <path d="M 237,267 C 230,265 216,264 212,266" fill="none" stroke="#5a3010" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Брюхо -->
+  <path d="M 188,195 C 186,220 185,258 188,285 C 192,298 200,303 200,303
+    C 200,303 208,298 212,285 C 215,258 214,220 212,195
+    C 208,182 200,178 200,178 C 200,178 192,182 188,195 Z"
+    fill="#c8803a"/>
+
+  <!-- Штриховка на брюхе -->
+  <path d="M 191,205 C 196,203 204,203 209,205" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 190,218 C 195,216 205,216 210,218" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 189,231 C 194,229 206,229 211,231" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 189,244 C 194,242 206,242 211,244" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 189,257 C 194,255 206,255 211,257" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 190,270 C 195,268 205,268 210,270" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+  <path d="M 191,283 C 196,281 204,281 209,283" fill="none" stroke="#a06020" stroke-width="0.8" stroke-linecap="round"/>
+
+  <!-- ── ГОЛОВА ── -->
+  <ellipse cx="200" cy="155" rx="30" ry="28" fill="#8b5a2b"/>
+
+  <!-- Перья на голове -->
+  <path d="M 182,148 C 188,144 196,142 204,143" fill="none" stroke="#5a3010" stroke-width="0.9" stroke-linecap="round"/>
+  <path d="M 180,157 C 186,153 196,151 206,153" fill="none" stroke="#5a3010" stroke-width="0.9" stroke-linecap="round"/>
+
+  <!-- ── КЛЮВ ── -->
+  <path d="M 226,150 C 240,148 252,151 256,156 C 258,162 253,170 244,172
+    C 250,168 253,162 250,157 C 246,152 236,150 226,152 Z"
+    fill="#e07820"/>
+  <path d="M 256,156 C 262,160 261,168 255,172 C 250,169 244,172 244,172
+    C 253,170 258,162 256,156 Z"
+    fill="#e07820"/>
+  <path d="M 228,156 C 238,154 250,157 254,162 C 251,167 243,168 234,166
+    C 228,164 226,160 228,156 Z"
+    fill="#b85e10"/>
+  <path d="M 228,154 C 240,152 252,156 256,161" fill="none" stroke="#8b4010" stroke-width="1" stroke-linecap="round"/>
+  <ellipse cx="242" cy="150" rx="3" ry="1.8" fill="#8b4010" opacity="0.5"/>
+
+  <!-- ── ГЛАЗ ── -->
+  <path d="M 218,143 C 224,139 234,138 240,142"
+    fill="#5a3010" stroke="#3d1a08" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="228" cy="150" r="11" fill="#e8a030"/>
+  <circle cx="228" cy="150" r="7"  fill="#1a0a00"/>
+  <circle cx="231" cy="147" r="2.5" fill="#ffffff"/>
+  <circle cx="226" cy="152" r="1.2" fill="#ffffff" opacity="0.5"/>
+
+  <!-- ════════════════════════════════════
+       ТЕКСТ
+  ════════════════════════════════════ -->
+  <path class="adapt-line" d="M 70,378 L 120,378 M 140,378 L 280,378 M 300,378 L 350,378"
+    fill="none" stroke-width="1.2" opacity="0.35"/>
+  <circle class="adapt-dot" cx="130" cy="378" r="3.5" opacity="0.55"/>
+  <circle class="adapt-dot" cx="290" cy="378" r="3.5" opacity="0.55"/>
+
+  <text x="210" y="432"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="60" font-weight="bold"
+    text-anchor="middle" class="adapt-text" letter-spacing="14">KITE</text>
+
+</svg>
